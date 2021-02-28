@@ -1,7 +1,7 @@
 
 # Broken Link Hijacker
 
-BrokenLinkHijacker(BLH) is a Fast Broken Link Hijacker Tool written in Python. It crawls the website and searches for all the Broken Links.This tool mainly designed for Bug Bounty Hunters.It helps bug hunters collect all the Broken Links from the domain they are targeting. It crawls the website on 3 different deepness to get all the links from it. It also helps to find all the Social Media or Social Engagement platforms links mentioned on the website.  It Searches for links in 
+BrokenLinkHijacker(BLH) is a Fast Broken Link Hijacker Tool written in Python. It crawls the website and searches for all the Broken Links.This tool is mainly designed for Bug Bounty Hunters.It helps bug hunters collect all the Broken Links from the domain they are targeting. It crawls the website on 3 different deepness to get all the links from it. It also helps to find all the Social Media or Social Engagement platforms links mentioned on the website.  It Searches for links in 
 - `<a href>` tag
 - `<img src>` tag
 
@@ -80,6 +80,7 @@ url           | url           | A URL to scan
 
    
 ### Note
+- More details here https://edoverflow.com/2017/broken-link-hijacking/
 
 Use This Tool Wisely.\
 Happy Hacking :sparkles: :sparkles:
