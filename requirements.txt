@@ -1,0 +1,6 @@
+requests
+urllib3
+bs4 
+beautifulsoup4
+colorama
+argparse
