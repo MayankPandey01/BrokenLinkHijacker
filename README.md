@@ -74,7 +74,7 @@ url           | url           | A URL to scan
 
 - To Save output To a file : 
 
-  *By default Output is Set to False. The output fileame is set to `domain_links.txt` by default*.\
+  *By default Output is Set to False. The output filename is set to `domain_links.txt` by default*.\
   `BLH.py https://google.com -o True` . \
   `-o F or -o False ` | `-o T or -o True`.
 
