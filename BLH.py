@@ -289,9 +289,9 @@ if __name__ == "__main__":
         parser.add_argument(
             "-d", "--deepness", help="Level of deepness to search.(Default=1)", default=1, type=int)
         parser.add_argument(
-            "-o", "--output", help="Weather to save the output in a file. Default is False(Filename=domain-name_links.txt)")
+            "-o", "--output", help="Weather to save the output in a file. Default is False(Filename=domain-name_links.txt)", action="store_true", default=False)
         parser.add_argument("-v", "--verbosity",
-                            help="Set the Verbosity of Program(Default=True)")
+                            help="Set the Verbosity of Program(Default=True)", action="store_true", default=True)
         args = parser.parse_args()
         url = args.url
         deep = args.deepness
