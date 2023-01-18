@@ -6,6 +6,8 @@ import colorama
 import sys
 import argparse
 import random
+import threading
+from time import sleep
 
 colorama.init()
 
@@ -179,6 +181,8 @@ def main_proc(deep):
         print(f"{RED}[*] Incorrect Value for Deepness :{RESET}", deep)
         print(f"{RED}[*] Deepness Level Varies from 1-3{RESET}")
         print("")
+        
+    threads = []
 
     if deep == 1:
         links = main_webpage_links(url)
@@ -186,8 +190,9 @@ def main_proc(deep):
         search_msg()
         for link in outbound_urls:
             link = str(link)
-            status_check(link)
-        status_check_msg()
+            # status_check(link)
+            threads.append(threading.Thread(target=status_check, args=(link,)))
+        # status_check_msg()
     elif deep == 2:
         links = main_webpage_links(url)
         for link in links:
@@ -196,16 +201,29 @@ def main_proc(deep):
         search_msg()
         for link in outbound_urls:
             link = str(link)
-            status_check(link)
-        status_check_msg()
+            # status_check(link)
+            threads.append(threading.Thread(target=status_check, args=(link,)))
+        # status_check_msg()
 
     elif deep == 3:
         crawl(url)
         search_msg()
         for link in outbound_urls:
             link = str(link)
-            status_check(link)
-        status_check_msg()
+            # status_check(link)
+            threads.append(threading.Thread(target=status_check, args=(link,)))
+        # status_check_msg()
+        
+    for thread in threads:
+        if threading.active_count() > 10:
+            sleep(0.3)
+            thread.start()
+        else:
+            thread.start()
+    for thread in threads:
+        thread.join()
+    
+    status_check_msg()
 
 
 def info():
@@ -289,6 +307,9 @@ if __name__ == "__main__":
         parser.add_argument(
             "-d", "--deepness", help="Level of deepness to search.(Default=1)", default=1, type=int)
         parser.add_argument(
+
+            "-t", "--threads", help="Adjust no. of threads to be run at a time (Default: 10)", default=10, type=int)
+        parser.add_argument(
             "-o", "--output", help="Weather to save the output in a file. Default is False(Filename=domain-name_links.txt)", action="store_true", default=False)
         parser.add_argument("-v", "--verbosity",
                             help="Set the Verbosity of Program(Default=True)", action="store_true", default=True)
@@ -297,6 +318,8 @@ if __name__ == "__main__":
         deep = args.deepness
         verbosity = args.verbosity
         domain_name = urlparse(url).netloc
+        global thread_no
+        thread_no = args.threads
         output_location = domain_name+"_links.txt"
         banner()
         if args.verbosity == False or args.verbosity == "F":
