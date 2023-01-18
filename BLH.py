@@ -307,6 +307,7 @@ if __name__ == "__main__":
         parser.add_argument(
             "-d", "--deepness", help="Level of deepness to search.(Default=1)", default=1, type=int)
         parser.add_argument(
+
             "-t", "--threads", help="Adjust no. of threads to be run at a time (Default: 10)", default=10, type=int)
         parser.add_argument(
             "-o", "--output", help="Weather to save the output in a file. Default is False(Filename=domain-name_links.txt)", action="store_true", default=False)
